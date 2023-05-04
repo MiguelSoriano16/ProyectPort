@@ -128,5 +128,28 @@ public class Hub {
         }
         return counter;
     }
+
+    String c1exercise(int weight,Container cont){
+        boolean check;
+        if(cont.weight<=weight){
+            check=true;
+            return ("ID: "+cont.ID+", Sender Company: "+cont.companySend+", Weight: "+cont.weight);
+        }else{
+            check=false;
+           return null;
+        }
+    }
+
+    Container containerWithID(int ID) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 12; j++) {
+                if (this.containers[i][j].ID == ID) {
+                    return this.containers[i][j];
+                }
+            }
+        }
+        return null;
+    }
 }
+
 

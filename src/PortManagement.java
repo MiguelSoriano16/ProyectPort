@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class PortManagement extends JFrame{
     private JLabel IDnumber;
@@ -41,6 +42,7 @@ public class PortManagement extends JFrame{
     private JRadioButton hub3radiobuttom;
     private JLabel Total;
     private JLabel IDTOSHOW;
+    private JButton WeightCheckbutton;
     Port port=new Port();
     int hub=1;
 
@@ -199,6 +201,30 @@ public class PortManagement extends JFrame{
                 if (hub3radiobuttom.isSelected()) {
                     hub = 3;
                     StateTextArea1.setText("Hub 3\n" + port.hub3.stringState());
+                }
+            }
+        });
+        WeightCheckbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int ID;
+                int weight;
+                Container cont;
+                String str="";
+                ID=Integer.parseInt(IDTextField.getText());
+                weight=Integer.parseInt(WeightFieldText.getText());
+                if(hub1radiobutton.isSelected()) {
+                    cont = port.hub1.containerWithID(ID);
+                    JOptionPane.showMessageDialog(null,""+port.hub1.c1exercise(weight, cont));
+                    CustomInspectionscheckBox1.setSelected(true);
+                } else if (hub2RadioButton.isSelected()) {
+                    cont = port.hub2.containerWithID(ID);
+                    JOptionPane.showMessageDialog(null,""+port.hub2.c1exercise(weight, cont));
+                    CustomInspectionscheckBox1.setSelected(true);
+                } else if (hub3radiobuttom.isSelected()) {
+                    cont = port.hub3.containerWithID(ID);
+                    JOptionPane.showMessageDialog(null,""+port.hub3.c1exercise(weight, cont));
+                    CustomInspectionscheckBox1.setSelected(true);
                 }
             }
         });
